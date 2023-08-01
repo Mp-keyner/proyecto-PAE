@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Aca van los estilos del header */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #36c;
+}
+
+
+
+.head {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 12px;
+}
+
+.image-container {
+    width: 6pc;
+    height: 21px;
+    margin-left: 0.2pc;
+    margin-right: 35pc;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    margin-right: 4px;
+    color: #fff;
+}
+
+p {
+    color: #fff;
+    font-size: 24px;
+    margin-right: 4px;
+}
+
+.btn1 {
+    background-color: rgb(225, 214, 0);
+    border: none;
+    font-size: 18px;
+    border-radius: 8px;
+    color: #000;
+    width: 5pc;
+    height: 2.5pc;
+}
+
+.btn1 a {
+    color: #000;
+    text-decoration: none;
+}
+
+.btn1:hover {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background-color: rgb(225, 0, 0);
+    color: #fff;
+}
+
+/* Aca van los estilos del main */
+
+.hero {
+
+
+    width: 100%;
+}
+
+.first {
+    background-color: #7795b991;
+    width: 100%;
+    height: 20vh;
+    padding: 20px 0 10px 0;
+    margin-bottom: 20px;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+}
+
+ul li {
+    margin-right: 18px;
+
+}
+
+ul a {
+    font-weight: 900;
+    color: rgb(225, 214, 0);
+    text-decoration: none;
+}
+
+ul a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.irr {
+    margin-left: 30px;
+    font-size: 60px;
+    font-weight: 200;
+}
+
+/* Aca van los estilos del mensaje */
+
+.second {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 60vh;
+    margin-bottom: 4pc;
+}
+
+.msj {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-cont {
+    width: 250px;
+    height: 200px;
+}
+
+.img-cont img {
+    width: 100%;
+    height: 100%;
+}
+
+h2 {
+    margin-bottom: 6px;
+}
+
+
+
+form {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+form p {
+    font-size: 18px;
+    color: #000;
+}
+
+
+button {
+    height: 30px;
+    width: 80px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgb(41, 225, 0);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+/* Aca van los estilos del footer */
+
+.third {
+    display: flex;
+    align-items: center;
+    height: 15vh;
+    background-color: #36c;
+}
+
+.gov {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-left: 3pc;
+}
+
+.co {
+    width: 50px;
+    height: 50px;
+    margin-right: 2pc;
+}
+
+.co img {
+    width: 100%;
+    height: 100%;
+}
+
+.go {
+    width: 140px;
+    height: 28px;
+}
+
+.go img {
+    width: 100%;
+    height: 100%;
+}
