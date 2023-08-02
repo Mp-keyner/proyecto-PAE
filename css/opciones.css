@@ -1,0 +1,125 @@
+:root {
+  --color-botones: #b43737;
+  --bg-fondo: #3366cc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+nav {
+  background-color: var(--bg-fondo);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+nav div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+nav div h1 {
+  font-size: 1.9pc;
+}
+nav div img {
+  width: 6pc;
+  height: 21px;
+}
+nav div a {
+  text-decoration: none;
+  color: white;
+  background-color: var(--color-botones);
+  width: 12pc;
+  height: 2.5pc;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.first {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2pc 3pc;
+}
+.imglive {
+  width: 130px;
+  height: 48px;
+  object-fit: cover;
+}
+.imgEdu {
+  width: 190px;
+  height: 50px;
+}
+.secont {
+  display: flex;
+  /* border: 1px solid green; */
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 3pc;
+  gap: 2pc;
+  height: 100vh;
+}
+.Institucion {
+  /* border: 1px solid red; */
+  width: 30pc;
+  display: flex;
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3%;
+  height: 30pc;
+}
+.Institucion:hover,
+.otros:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+.otros {
+  /* border: 1px solid blue; */
+  border-radius: 10px;
+  width: 30pc;
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3%;
+  height: 30pc;
+}
+.Institucion img,
+.otros img {
+  width: 77%;
+}
+
+@media screen and (max-width: 868px) {
+  .secont {
+    flex-direction: column;
+  }
+  .Institucion,
+  .otros {
+    width: 100%;
+  }
+}
+footer {
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: var(--bg-fondo);
+  height: 5pc;
+  padding: 0 2pc;
+}
+footer div {
+  display: flex;
+  align-items: center;
+  gap: 1pc;
+}

@@ -50,7 +50,8 @@
 
       /* Estilos para el contenedor de resultados */
       #resultadosContactos,
-      #resultadosFiles {
+      #resultadosFiles,
+      #resultadosInstituciones {
         margin-bottom: 40px;
       }
 
@@ -73,11 +74,11 @@
   <body>
     <!-- Contenedor para mostrar los resultados de "contactos" -->
     <div id="resultadosContactos">
-      <h2>Reporte:</h2>
+      <h2>Reporte de Instituciones:</h2>
       <table>
         <thead>
           <tr>
-            <th>Nombre</th>
+            <th>Nombre de la Institución</th>
             <th>Telefono</th>
             <th>Asunto</th>
             <th>Direccion</th>
@@ -98,6 +99,26 @@
           </tr>
         </thead>
         <tbody id="tablaFiles"></tbody>
+      </table>
+    </div>
+
+    <!-- Contenedor para mostrar los resultados de "instituciones" -->
+    <div id="resultadosInstituciones">
+      <h2>Reporte de Acudientes:</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre de la Institución</th>
+            <th>Tipo de Institución</th>
+            <th>Correo</th>
+            <th>Dirección</th>
+            <th>Fecha</th>
+            <th>Municipio</th>
+            <th>Teléfono</th>
+            <th>Recibio Alimentos</th>
+          </tr>
+        </thead>
+        <tbody id="tablaInstituciones"></tbody>
       </table>
     </div>
 
@@ -155,6 +176,35 @@
               doc.data().nombre +
               "</td><td>" +
               `<a href="${doc.data().url}">Archivo </a>` +
+              "</td></tr>";
+          });
+        });
+
+      // Realiza la consulta a la colección "instituciones"
+      db.collection("instituciones")
+        .get()
+        .then((querySnapshotInstituciones) => {
+          // Procesa los documentos de la colección "instituciones"
+          var tablaInstituciones =
+            document.getElementById("tablaInstituciones");
+          querySnapshotInstituciones.forEach((doc) => {
+            tablaInstituciones.innerHTML +=
+              "<tr><td>" +
+              doc.data().nombreInstitucion +
+              "</td><td>" +
+              doc.data().tipoInstitucion +
+              "</td><td>" +
+              doc.data().correo +
+              "</td><td>" +
+              doc.data().direccion +
+              "</td><td>" +
+              doc.data().fecha +
+              "</td><td>" +
+              doc.data().municipio +
+              "</td><td>" +
+              doc.data().telefono +
+              "</td><td>" +
+              doc.data().recibioAlimentos +
               "</td></tr>";
           });
         });

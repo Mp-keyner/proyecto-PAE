@@ -29,9 +29,9 @@
           </div>
         </div>
 
-        <a href="./inventario.html">
-          <button class="btn1" style="width: 14pc">Envio de Inventario</button>
-        </a>
+        <button class="btn1" style="width: 14pc">
+          <a href="./inventario.html">Envio de Inventario</a>
+        </button>
       </div>
     </header>
 
@@ -45,16 +45,16 @@
       <section class="second">
         <div class="msj">
           <div class="img-cont">
-            <img src="./img/institucion.jpg" alt="" />
+            <img src="./img/6029655.jpg" alt="" />
           </div>
         </div>
         <div class="formulario">
           <h2>Presenta Petición:</h2>
           <form action="#">
-            <label for="nombre">Nombre de la institución</label>
+            <label for="nombre">Nombre del acudiente:</label>
             <input type="text" id="name" placeholder="Nombre" required />
 
-            <label for="email">Correo</label>
+            <label for="email">Correo:</label>
             <input
               type="email"
               name=""
@@ -63,7 +63,7 @@
               required
             />
 
-            <label for="email">Telefono</label>
+            <label for="email">Telefono:</label>
             <input
               type="text"
               name=""
@@ -72,7 +72,7 @@
               required
             />
 
-            <label for="">Municipio</label>
+            <label for="">Municipio:</label>
             <select
               id="municipiosSelect"
               class="border border-gray-400 rounded px-3 py-2"
@@ -103,7 +103,7 @@
               <option value="Usiacurí">Usiacurí</option>
             </select>
 
-            <label for="email">Direccion</label>
+            <label for="email">Direccion:</label>
             <input
               type="text"
               name=""
@@ -112,17 +112,17 @@
               required
             />
 
-            <label for="">Fecha</label>
+            <label for="">Fecha:</label>
             <input type="date" name="" id="fecha" />
 
-            <label for="">Recibio a tiempo los alimentos </label>
+            <label for="">Recibio los alimentos en buenas condiciones: </label>
             <select name="" id="recibioAlimentosSelect">
               <option value="">Seleccionar...</option>
               <option value="si">si</option>
               <option value="no">no</option>
             </select>
 
-            <label for="">Asunto</label>
+            <label for="">Asunto:</label>
             <textarea
               name="asunto"
               id="asunto"
@@ -131,6 +131,23 @@
               placeholder="Asunto"
               required
             ></textarea>
+
+            <label for="">Nombre de la institución:</label>
+            <input
+              type="text"
+              id="nombreInstitucion"
+              placeholder="Nombre de la institución"
+              required
+            />
+
+            <label for="">Tipo de institución:</label>
+            <select name="" id="tipoInstitucionSelect">
+              <option value="">Seleccionar...</option>
+              <option value="escuela">Escuela</option>
+              <option value="colegio">Colegio</option>
+              <option value="universidad">Universidad</option>
+            </select>
+
             <button id="miBoton">ENVIAR PETICIÓN</button>
           </form>
         </div>
@@ -179,6 +196,10 @@
       const recibioAlimentosSelect = document.getElementById(
         "recibioAlimentosSelect"
       );
+      const nombreInstitucion = document.getElementById("nombreInstitucion");
+      const tipoInstitucionSelect = document.getElementById(
+        "tipoInstitucionSelect"
+      );
 
       miBoton.addEventListener("click", function (e) {
         e.preventDefault();
@@ -191,6 +212,8 @@
         const municipioValue = municipiosSelect.value;
         const fechaValue = fechaInput.value;
         const recibioAlimentosValue = recibioAlimentosSelect.value;
+        const nombreInstitucionValue = nombreInstitucion.value;
+        const tipoInstitucionValue = tipoInstitucionSelect.value;
 
         // Crea un objeto con los datos a enviar a la base de datos
         const data = {
@@ -202,10 +225,12 @@
           municipio: municipioValue,
           fecha: fechaValue,
           recibioAlimentos: recibioAlimentosValue,
+          nombreInstitucion: nombreInstitucionValue,
+          tipoInstitucion: tipoInstitucionValue,
         };
 
-        // Agrega el objeto a la colección "contactos" en Firestore
-        addDoc(collection(db, "contactos"), data)
+        // Agrega el objeto a la colección "instituciones" en Firestore
+        addDoc(collection(db, "instituciones"), data)
           .then(() => {
             console.log("Datos enviados a la base de datos.");
             // Redirecciona a la URL deseada después de enviar los datos

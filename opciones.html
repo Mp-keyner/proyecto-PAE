@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/toastify-js@1.11.0/dist/toastify.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/opciones.css" />
+    <title>Reporte - PAE</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div>
+          <h1>CUENTAS CLARAS</h1>
+          <p>|</p>
+          <img src="./img/logo_header.png" alt="" />
+        </div>
+        <div>
+          <a href="./inventario.html">Envio inventtario</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="first">
+        <img src="./img/potencia.png" alt="" class="imglive" />
+        <img src="./img/educacion.png" alt="" class="imgEdu" />
+      </section>
+      <h1 style="text-align: center">Escoje el papel que juegas</h1>
+      <section class="secont">
+        <div class="Institucion" id="institucion">
+          <h2>Institucion</h2>
+          <img src="./img/5180211.jpg" alt="" />
+        </div>
+        <div class="otros" id="otros">
+          <h2>Otros</h2>
+          <img src="./img/4906435.jpg" alt="" />
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div>
+        <img src="./img/marcacolombia.png" alt="" style="width: 3.1pc" />
+        <p>|</p>
+        <img src="./img/logo_header.png" alt="" style="width: 10.1pc" />
+      </div>
+    </footer>
+    <script>
+      let Institucion = document.getElementById("institucion");
+      let otros = document.getElementById("otros");
+      Institucion.addEventListener("click", () => {
+        window.location.href = "./contact.html";
+      });
+      otros.addEventListener("click", () => {
+        window.location.href = "./otros.html";
+      });
+    </script>
+  </body>
+</html>
