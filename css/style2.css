@@ -4,7 +4,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Aca van los estilos del header */
+/* Aca van los estilos del header */ 
 
 .header {
     display: flex;
@@ -47,7 +47,7 @@ p {
 }
 
 .btn1 {
-    background-color: rgb(225, 214, 0);
+    background-color: #b43737;
     border: none;
     font-size: 18px;
     border-radius: 8px;
@@ -57,7 +57,7 @@ p {
 }
 
 .btn1 a {
-    color: #000;
+    color: white;
     text-decoration: none;
 }
 
@@ -79,7 +79,6 @@ p {
 .first {
     background-color: #7795b991;
     width: 100%;
-    height: 20vh;
     padding: 20px 0 10px 0;
     margin-bottom: 20px;
 }
@@ -96,7 +95,7 @@ ul li {
 
 ul a {
     font-weight: 900;
-    color: rgb(225, 214, 0);
+    color: #b43737;
     text-decoration: none;
 }
 
@@ -108,34 +107,38 @@ ul a:hover {
 .irr {
     margin-left: 30px;
     font-size: 60px;
-    font-weight: 200;
 }
 
 /* Aca van los estilos del mensaje */
 
 .second {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    align-items: center;
+    gap: 16pc;
+    padding: 0 1pc;
+    width: 90%;
     height: 60vh;
     margin-bottom: 4pc;
 }
 
 .msj {
     display: flex;
+    width: 50%;
     justify-content: center;
     align-items: center;
 }
 
 .img-cont {
-    width: 250px;
-    height: 200px;
+   width: 100%;
 }
 
 .img-cont img {
     width: 100%;
     height: 100%;
 }
-
+.formulario{
+    width: 50%;
+}
 h2 {
     margin-bottom: 6px;
 }
@@ -150,18 +153,21 @@ form {
 form input {
     height: 35px;
     margin-bottom: 18px;
+    padding: 0 7px;
 }
 
 form textarea {
     margin-bottom: 10px;
+    padding: 0 7px;
+    max-height: 11pc;
 }
 
 button {
-    height: 30px;
-    width: 80px;
+    height: 40px;
     border: none;
     border-radius: 6px;
-    background-color: rgb(41, 225, 0);
+    color: white;
+    background-color: #b43737;
 }
 
 button:hover {
