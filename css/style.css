@@ -54,11 +54,10 @@ p {
   border: none;
   font-size: 18px;
   border-radius: 8px;
-  color: #000;
+  color: white;
   width: 15pc;
   height: 2.5pc;
   margin-top: 1pc;
-
 }
 
 .btn1 a {
@@ -110,13 +109,13 @@ p {
 }
 
 .imagene-container {
-  margin-left: 4pc;
   width: 130px;
   height: 48px;
 }
 
 .imagene-container img {
   width: 100%;
+  margin-left: 4pc;
   height: 100%;
 }
 

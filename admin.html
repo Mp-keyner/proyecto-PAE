@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/toastify-js@1.11.0/dist/toastify.min.css"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@900&display=swap"
+      rel="stylesheet"
+    />
+    <title>PAE - Admin</title>
+    <style>
+      /* Estilos para el cuerpo de la tabla */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 16px;
+        text-align: left;
+      }
+      body {
+        padding: 4pc;
+      }
+      /* Estilos para los encabezados de la tabla */
+      th {
+        background-color: #f2f2f2;
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+
+      /* Estilos para las celdas de la tabla */
+      td {
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+
+      /* Estilos para el contenedor de resultados */
+      #resultadosContactos,
+      #resultadosFiles {
+        margin-bottom: 40px;
+      }
+
+      /* Estilos para los enlaces en las celdas */
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Estilos para los títulos de sección */
+      h2 {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Contenedor para mostrar los resultados de "contactos" -->
+    <div id="resultadosContactos">
+      <h2>Reporte:</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Asunto</th>
+            <th>Direccion</th>
+          </tr>
+        </thead>
+        <tbody id="tablaContactos"></tbody>
+      </table>
+    </div>
+
+    <!-- Contenedor para mostrar los resultados de "files" -->
+    <div id="resultadosFiles">
+      <h2>Archivos:</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre de Archivo</th>
+            <th>URL</th>
+          </tr>
+        </thead>
+        <tbody id="tablaFiles"></tbody>
+      </table>
+    </div>
+
+    <!-- Agrega el SDK de Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script>
+      // Configura Firebase con tus credenciales
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBvzNwa9IjumO0NCrpxkWSpgysXrrrFQ3M",
+        authDomain: "cuentas-claras-acb79.firebaseapp.com",
+        projectId: "cuentas-claras-acb79",
+        storageBucket: "cuentas-claras-acb79.appspot.com",
+        messagingSenderId: "43230082429",
+        appId: "1:43230082429:web:655280415f81e273b90814",
+      };
+      // Inicializa la aplicación de Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      // Obtén una referencia a la base de datos de Firestore
+      var db = firebase.firestore();
+
+      // Realiza la consulta a la colección "contactos"
+      db.collection("contactos")
+        .get()
+        .then((querySnapshotContactos) => {
+          // Procesa los documentos de la colección "contactos"
+          var tablaContactos = document.getElementById("tablaContactos");
+          querySnapshotContactos.forEach((doc) => {
+            console.log(doc.data());
+            tablaContactos.innerHTML +=
+              "<tr><td>" +
+              doc.data().name +
+              "</td><td>" +
+              doc.data().telefono +
+              "</td><td>" +
+              doc.data().asunto +
+              "</td><td>" +
+              doc.data().direccion +
+              "</td></tr>";
+          });
+        });
+
+      // Realiza la consulta a la colección "files"
+      db.collection("files")
+        .get()
+        .then((querySnapshotFiles) => {
+          // Procesa los documentos de la colección "files"
+          var tablaFiles = document.getElementById("tablaFiles");
+          querySnapshotFiles.forEach((doc) => {
+            tablaFiles.innerHTML +=
+              "<tr><td>" +
+              doc.data().nombre +
+              "</td><td>" +
+              `<a href="${doc.data().url}">Archivo </a>` +
+              "</td></tr>";
+          });
+        });
+    </script>
+  </body>
+</html>

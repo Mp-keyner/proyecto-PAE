@@ -1,212 +1,212 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Aca van los estilos del header */ 
+/* Aca van los estilos del header */
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #36c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #36c;
 }
 
-
-
 .head {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-left: 12px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 12px;
+  width: 100%;
+  justify-content: space-between;
+}
+.head div {
+  display: flex;
+  align-items: center;
 }
 
 .image-container {
-    width: 6pc;
-    height: 21px;
-    margin-left: 0.2pc;
-    margin-right: 35pc;
+  width: 6pc;
+  height: 21px;
+  margin-left: 0.2pc;
+  margin-right: 35pc;
 }
 
 .img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .title {
-    margin-right: 4px;
-    color: #fff;
+  margin-right: 4px;
+  color: #fff;
 }
 
 p {
-    color: #fff;
-    font-size: 24px;
-    margin-right: 4px;
+  color: #fff;
+  font-size: 24px;
+  margin-right: 4px;
 }
 
 .btn1 {
-    background-color: #b43737;
-    border: none;
-    font-size: 18px;
-    border-radius: 8px;
-    color: #000;
-    width: 10pc;
-    height: 2.5pc;
+  background-color: #b43737;
+  border: none;
+  font-size: 18px;
+  border-radius: 8px;
+  color: #000;
+  width: 10pc;
+  height: 2.5pc;
 }
 
 .btn1 a {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .btn1:hover {
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    background-color: rgb(225, 0, 0);
-    color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: rgb(225, 0, 0);
+  color: #fff;
 }
 
 /* Aca van los estilos del main */
 
 .hero {
-
-
-    width: 100%;
+  width: 100%;
 }
 
 .first {
-    background-color: #7795b991;
-    width: 100%;
-    padding: 20px 0 10px 0;
-    margin-bottom: 20px;
+  background-color: #7795b991;
+  width: 100%;
+  padding: 20px 0 10px 0;
+  margin-bottom: 20px;
 }
 
 ul {
-    display: flex;
-    list-style: none;
+  display: flex;
+  list-style: none;
 }
 
 ul li {
-    margin-right: 18px;
-
+  margin-right: 18px;
 }
 
 ul a {
-    font-weight: 900;
-    color: #b43737;
-    text-decoration: none;
+  font-weight: 900;
+  color: #b43737;
+  text-decoration: none;
 }
 
 ul a:hover {
-    color: #fff;
-    text-decoration: underline;
+  color: #fff;
+  text-decoration: underline;
 }
 
 .irr {
-    margin-left: 30px;
-    font-size: 60px;
+  margin-left: 30px;
+  font-size: 60px;
 }
 
 /* Aca van los estilos del mensaje */
 
 .second {
-    display: flex;
-    align-items: center;
-    gap: 16pc;
-    padding: 0 1pc;
-    width: 90%;
-    height: 60vh;
-    margin-bottom: 4pc;
+  display: flex;
+  align-items: center;
+  gap: 6pc;
+  padding: 0 3.9pc;
+  width: 90%;
+  height: 96vh;
 }
 
 .msj {
-    display: flex;
-    width: 50%;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
 }
 
 .img-cont {
-   width: 100%;
+  width: 100%;
 }
 
 .img-cont img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
-.formulario{
-    width: 50%;
+.formulario {
+  width: 50%;
 }
 h2 {
-    margin-bottom: 6px;
+  margin-bottom: 6px;
 }
 
 form {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    margin-right: 20px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  margin-right: 20px;
 }
 
 form input {
-    height: 35px;
-    margin-bottom: 18px;
-    padding: 0 7px;
+  height: 35px;
+  margin-bottom: 18px;
+  padding: 0 7px;
 }
 
 form textarea {
-    margin-bottom: 10px;
-    padding: 0 7px;
-    max-height: 11pc;
+  margin-bottom: 10px;
+  padding: 0 7px;
+  max-height: 6pc;
 }
 
 button {
-    height: 40px;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    background-color: #b43737;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  background-color: #b43737;
 }
 
 button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /* Aca van los estilos del footer */
 
 .third {
-    display: flex;
-    align-items: center;
-    height: 15vh;
-    background-color: #36c;
+  display: flex;
+  align-items: center;
+  height: 15vh;
+  background-color: #36c;
 }
 
 .gov {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-left: 3pc;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-left: 3pc;
 }
 
 .co {
-    width: 50px;
-    height: 50px;
-    margin-right: 2pc;
+  width: 50px;
+  height: 50px;
+  margin-right: 2pc;
 }
 
 .co img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .go {
-    width: 140px;
-    height: 28px;
+  width: 140px;
+  height: 28px;
 }
 
 .go img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }

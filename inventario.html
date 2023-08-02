@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style3.css" />
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/toastify-js@1.11.0/dist/toastify.min.css"
+      rel="stylesheet"
+    />
+    <title>Reporte</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="head">
+        <div>
+          <h1 class="title">CUENTAS CLARAS</h1>
+          <p>|</p>
+          <div class="image-container">
+            <img src="/img/logo_header.png" alt="logo" class="img" />
+          </div>
+        </div>
+
+        <button class="btn1">
+          <a href="/html/index.html">Home</a>
+        </button>
+      </div>
+    </header>
+
+    <main class="hero">
+      <!-- <section class="first">
+        <div class="content">
+          <h1 class="irr">Envio Inventario</h1>
+        </div>
+      </section> -->
+
+      <section class="second">
+        <div class="msj">
+          <div class="img-cont">
+            <img src="/img/7495401.jpg" alt="" />
+          </div>
+        </div>
+        <div class="formulario">
+          <p>
+            En el marco del Programa de Alimentación Escolar (PAE) en Colombia,
+            se realiza un crucial proceso de envío de inventarios a las
+            instituciones educativas participantes. Este apartado del programa
+            se encarga de recopilar y gestionar la información sobre los
+            suministros alimenticios disponibles y su distribución en las
+            diferentes escuelas y colegios.
+          </p>
+          <br />
+          <h4>Adjunta el inventario de alimentos</h4>
+          <form id="formulario">
+            <input
+              type="text"
+              name="nombre"
+              id="nombre"
+              placeholder="Nombre del encargado"
+            />
+            <input type="file" id="fileInput" />
+            <button type="submit">ENVIAR</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="third">
+      <div class="gov">
+        <div class="co"><img src="/img/marcacolombia.png" alt="" /></div>
+        <div class="go"><img src="/img/logo_header.png" alt="" /></div>
+      </div>
+      <div class="pae"></div>
+    </footer>
+    <script type="module">
+      // Importa las funciones necesarias del SDK de Firebase
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+      } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+      import {
+        getStorage,
+        ref,
+        uploadBytes,
+        getDownloadURL,
+      } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+
+      // Tu web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBvzNwa9IjumO0NCrpxkWSpgysXrrrFQ3M",
+        authDomain: "cuentas-claras-acb79.firebaseapp.com",
+        projectId: "cuentas-claras-acb79",
+        storageBucket: "cuentas-claras-acb79.appspot.com",
+        messagingSenderId: "43230082429",
+        appId: "1:43230082429:web:655280415f81e273b90814",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      const storage = getStorage(app);
+
+      // Obtén el formulario y añade un listener para enviar los datos
+      const formulario = document.getElementById("formulario");
+      formulario.addEventListener("submit", function (e) {
+        e.preventDefault(); // Evita que el formulario se envíe por defecto
+
+        const nombreInput = document.getElementById("nombre");
+        const nombre = nombreInput.value;
+        const fileInput = document.getElementById("fileInput");
+        const file = fileInput.files[0]; // Obtenemos el primer archivo seleccionado
+
+        if (nombre && file) {
+          // Subir el archivo a Firebase Storage
+          const storageRef = ref(storage, "files/" + file.name);
+          const uploadTask = uploadBytes(storageRef, file);
+
+          uploadTask
+            .then((snapshot) => {
+              // Subida completada con éxito
+              console.log("Archivo subido exitosamente");
+
+              // Obtén la URL de descarga del archivo subido
+              getDownloadURL(snapshot.ref).then((downloadURL) => {
+                // Guardar la información en Firestore
+                const data = {
+                  nombre: nombre,
+                  archivo: file.name,
+                  url: downloadURL,
+                  fecha: new Date().toISOString(),
+                };
+
+                // Agrega el objeto a la colección "files" en Firestore
+                addDoc(collection(db, "files"), data)
+                  .then(() => {
+                    console.log("Datos guardados en Firestore.");
+                    window.location.href = "./index.html";
+                    // Opcional: Puedes mostrar un mensaje de éxito aquí
+                    nombreInput.value = "";
+                    fileInput.value = null;
+                  })
+                  .catch((error) => {
+                    console.error("Error al guardar los datos:", error);
+                  });
+              });
+            })
+            .catch((error) => {
+              // Manejo de errores durante la subida
+              console.error("Error al subir el archivo:", error);
+            });
+        } else {
+          console.log("Por favor, ingresa un nombre y selecciona un archivo.");
+        }
+      });
+
+      // Añade un listener para el cambio del input de archivo
+      const fileInput = document.getElementById("fileInput");
+      fileInput.addEventListener("change", function (e) {
+        // Subir automáticamente el archivo seleccionado cuando cambia
+        const file = e.target.files[0];
+        if (file) {
+          const storageRef = ref(storage, "files/" + file.name);
+          const uploadTask = uploadBytes(storageRef, file);
+
+          uploadTask
+            .then((snapshot) => {
+              // Subida completada con éxito
+              console.log("Archivo subido automáticamente:", file.name);
+              // Obtén la URL de descarga del archivo subido
+              getDownloadURL(snapshot.ref).then((downloadURL) => {
+                console.log("URL de descarga:", downloadURL);
+              });
+            })
+            .catch((error) => {
+              // Manejo de errores durante la subida
+              console.error("Error al subir el archivo:", error);
+            });
+        }
+      });
+    </script>
+  </body>
+</html>

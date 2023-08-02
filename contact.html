@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style2.css" />
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/toastify-js@1.11.0/dist/toastify.min.css"
+      rel="stylesheet"
+    />
+    <title>Reporte</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="head">
+        <div>
+          <h1 class="title">CUENTAS CLARAS</h1>
+          <p>|</p>
+          <div class="image-container">
+            <img src="/img/logo_header.png" alt="logo" class="img" />
+          </div>
+        </div>
+
+        <button class="btn1" style="width: 14pc">
+          <a href="/html/inventario.html">Envio de Inventario</a>
+        </button>
+      </div>
+    </header>
+
+    <main class="hero">
+      <!-- <section class="first">
+        <div class="content">
+          <h1 class="irr">Reportar Irregularidad</h1>
+        </div>
+      </section> -->
+
+      <section class="second">
+        <div class="msj">
+          <div class="img-cont">
+            <img src="/img/6029655.jpg" alt="" />
+          </div>
+        </div>
+        <div class="formulario">
+          <h2>Reporta</h2>
+          <form action="#">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="name" placeholder="Nombre" required />
+
+            <label for="email">Correo</label>
+            <input
+              type="email"
+              name=""
+              id="carreo"
+              placeholder="Email"
+              required
+            />
+
+            <label for="email">Telefono</label>
+            <input
+              type="text"
+              name=""
+              id="telefono"
+              placeholder="Telefono"
+              required
+            />
+            <label for="email">Direccion</label>
+            <input
+              type="text"
+              name=""
+              id="direccion"
+              placeholder="Direccion"
+              required
+            />
+
+            <textarea
+              name="asunto"
+              id="asunto"
+              cols="30"
+              rows="10"
+              placeholder="Asunto"
+              required
+            ></textarea>
+            <button id="miBoton">ENVIAR</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="third">
+      <div class="gov">
+        <div class="co"><img src="/img/marcacolombia.png" alt="" /></div>
+        <div class="go"><img src="/img/logo_header.png" alt="" /></div>
+      </div>
+      <div class="pae"></div>
+    </footer>
+    <!-- <script src="../index.js"></script> -->
+    <!-- <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBvzNwa9IjumO0NCrpxkWSpgysXrrrFQ3M",
+        authDomain: "cuentas-claras-acb79.firebaseapp.com",
+        projectId: "cuentas-claras-acb79",
+        storageBucket: "cuentas-claras-acb79.appspot.com",
+        messagingSenderId: "43230082429",
+        appId: "1:43230082429:web:655280415f81e273b90814",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script> -->
+    <script type="module">
+      // Importa las funciones necesarias del SDK de Firebase para Firestore
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+      } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+
+      // Tu web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBvzNwa9IjumO0NCrpxkWSpgysXrrrFQ3M",
+        authDomain: "cuentas-claras-acb79.firebaseapp.com",
+        projectId: "cuentas-claras-acb79",
+        storageBucket: "cuentas-claras-acb79.appspot.com",
+        messagingSenderId: "43230082429",
+        appId: "1:43230082429:web:655280415f81e273b90814",
+      };
+
+      // Inicializa Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      const miBoton = document.getElementById("miBoton");
+      const name = document.getElementById("name");
+      const carreo = document.getElementById("carreo");
+      const telefono = document.getElementById("telefono");
+      const direccion = document.getElementById("direccion");
+      const asunto = document.getElementById("asunto");
+
+      miBoton.addEventListener("click", function (e) {
+        e.preventDefault();
+        // Obtén los valores de los inputs
+        const nameValue = name.value;
+        const carreoValue = carreo.value;
+        const telefonoValue = telefono.value;
+        const direccionValue = direccion.value;
+        const asuntoValue = asunto.value;
+
+        console.log(nameValue, carreoValue, telefonoValue, direccionValue);
+        // Crea un objeto con los datos a enviar a la base de datos
+        const data = {
+          name: nameValue,
+          correo: carreoValue,
+          telefono: telefonoValue,
+          direccion: direccionValue,
+          asunto: asuntoValue,
+        };
+
+        // Agrega el objeto a la colección "contactos" en Firestore
+        addDoc(collection(db, "contactos"), data)
+          .then(() => {
+            console.log("Datos enviados a la base de datos.");
+            // Redirecciona a la URL deseada después de enviar los datos
+            window.location.href = "./index.html";
+          })
+          .catch((error) => {
+            console.error("Error al enviar los datos:", error);
+          });
+      });
+    </script>
+  </body>
+</html>
